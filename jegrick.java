@@ -58,10 +58,10 @@ public class FinalProject {
                     }
                     break;
                 case 4:
-                    long endTime = System.currentTimeMillis();
-                    double totalExecutionTimeInSeconds = (startTime - endTime) / 1000.0; // Convert ms to seconds
-                    System.out.printf("Total execution time: %.2f seconds%n", totalExecutionTimeInSeconds);
                     exitProgram(scanner);
+                    long endTime = System.currentTimeMillis();
+                    double totalExecutionTimeInSeconds = (endTime - endTime) / 1000.0; // Convert ms to seconds
+                    System.out.printf("Total execution time: %.2f s%n", totalExecutionTimeInSeconds);
                     break;
             }
         }
