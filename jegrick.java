@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class FinalProject {
+    static long startTime;
+    static long endTime;
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
         Scanner scanner = new Scanner(System.in);
         int[] arr = new int[10];
         while (true) {
@@ -59,9 +61,6 @@ public class FinalProject {
                     break;
                 case 4:
                     exitProgram(scanner);
-                    long endTime = System.currentTimeMillis();
-                    double totalExecutionTimeInSeconds = (endTime - endTime) / 1000.0; // Convert ms to seconds
-                    System.out.printf("Total execution time: %.2f s%n", totalExecutionTimeInSeconds);
                     break;
             }
         }
@@ -87,6 +86,9 @@ public class FinalProject {
             System.out.print("\nAre you sure you want to EXIT [Y/N]: ");
             String choice = scanner.nextLine().trim().toUpperCase();
             if (choice.equals("Y")) {
+                endTime = System.currentTimeMillis();
+                double totalExecutionTimeInSeconds = (endTime - startTime) / 1000.0; // Convert ms to seconds
+                System.out.printf("Total execution time: %.2f s%n", totalExecutionTimeInSeconds);
                 System.exit(0);
             } else if (choice.equals("N")) {
                 clearConsole();
