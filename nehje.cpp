@@ -153,7 +153,7 @@ void enterNumbers(vector<int>& arr) {
                 cout << "\033[1;31mInvalid input. Please enter an integer.\033[0m\n";
                 cin.clear(); 
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-                cout << "Re-enter value for position " << i + 1 << ": ";
+                cout << "\nEnter a set of 10 values: ";
             }
         }
     }
