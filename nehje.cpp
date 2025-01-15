@@ -16,7 +16,6 @@ void clearScreen();
 int getValidInput();
 bool continueProgram();
 void exitProgram();
-bool checkInput(vector<int>& arr);
 
 int main() {
     vector<int> arr(10);
@@ -112,7 +111,7 @@ void exitProgram() {
         if (strchr("yYnN", continueChoice) == nullptr) {
             cout << "\033[1;31mInvalid input. Please enter 'Y' or 'N'.\033[0m\n";
         } else if (continueChoice == 'Y' || continueChoice == 'y') {
-
+            exit(0);
         } else {
             clearScreen();
             return;
@@ -142,31 +141,21 @@ bool continueProgram() {
     }
 }
 
-bool checkInput(vector<int>& arr) {
-    int ch;
-    for (int i = 0; i < 10; i++) {
-        if (!(cin >> arr[i])) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            return false;
-        }
-    }
-    if ((ch = getchar()) != '\n' && ch != EOF) {
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        return false;
-    }
-    return true;
-}
-
 void enterNumbers(vector<int>& arr) {
-    while (true) {
-        cout << "\nEnter a set of 10 values: ";
-        if (checkInput(arr)) {
-            break;
+    cout << "\nEnter a set of 10 values: ";
+    for (int i = 0; i < 10; ++i) {
+        while (true) {
+            if (cin >> arr[i]) {
+                break;
+            } else {
+                cout << "\033[1;31mInvalid input. Please enter an integer.\033[0m\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "\nEnter a set of 10 values: ";
+            }
         }
-        cout << "\033[1;31mInvalid input. Please enter exactly 10 integers separated by spaces\033[0m\n";
     }
-    cout << "\n";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
 void bubbleSort(vector<int>& arr) {
