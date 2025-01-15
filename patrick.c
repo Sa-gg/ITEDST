@@ -109,6 +109,7 @@ void enterNumber(int arr[]) {
             break;
         }
     }
+    while (getchar() != '\n');
 }
 
 void bubbleSort(int arr[]) {
