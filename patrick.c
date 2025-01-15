@@ -124,7 +124,6 @@ int checkInput(int arr[]) {
     return true;
 }
 
-
 void bubbleSort(int arr[]) {
     bool isSorted = false;
     int pass = 0;
