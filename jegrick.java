@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class FinalProject {
     public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();
         Scanner scanner = new Scanner(System.in);
         int[] arr = new int[10];
         while (true) {
@@ -23,11 +24,8 @@ public class FinalProject {
                         System.out.println("+==================================================================================+");
                         System.out.println("| This mini program will sort a set of 10 numbers using the Bubble Sort algorithm. |");
                         System.out.println("+==================================================================================+");
-                        enterNumbers(scanner, arr);
-                        long startTime = System.currentTimeMillis();
+                        enterNumbers(scanner, arr);                   
                         bubbleSort(arr);
-                        long endTime = System.currentTimeMillis();
-                        System.out.println("Execution time: " + (endTime - startTime) + " ms");
                         if (!continueProgram(scanner)) break;
                     }
                     break;
@@ -41,10 +39,7 @@ public class FinalProject {
                         System.out.println("|      This mini program will find the largest element in a set of 10 numbers.      |");
                         System.out.println("+===================================================================================+");
                         enterNumbers(scanner, arr);
-                        long startTime = System.currentTimeMillis();
                         largestElement(arr);
-                        long endTime = System.currentTimeMillis();
-                        System.out.println("Execution time: " + (endTime - startTime) + " ms");
                         if (!continueProgram(scanner)) break;
                     }
                     break;
@@ -58,14 +53,14 @@ public class FinalProject {
                         System.out.println("|       This mini program will find all prime numbers in a set of 10 numbers.       |");
                         System.out.println("+===================================================================================+");
                         enterNumbers(scanner, arr);
-                        long startTime = System.currentTimeMillis();
                         primeNumbers(arr);
-                        long endTime = System.currentTimeMillis();
-                        System.out.println("Execution time: " + (endTime - startTime) + " ms");
                         if (!continueProgram(scanner)) break;
                     }
                     break;
                 case 4:
+                    long endTime = System.currentTimeMillis();
+                    double totalExecutionTimeInSeconds = (startTime - endTime) / 1000.0; // Convert ms to seconds
+                    System.out.printf("Total execution time: %.2f seconds%n", totalExecutionTimeInSeconds);
                     exitProgram(scanner);
                     break;
             }
