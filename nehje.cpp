@@ -112,9 +112,7 @@ void exitProgram() {
         if (strchr("yYnN", continueChoice) == nullptr) {
             cout << "\033[1;31mInvalid input. Please enter 'Y' or 'N'.\033[0m\n";
         } else if (continueChoice == 'Y' || continueChoice == 'y') {
-            clearScreen();
-            cout << "Exiting program. Goodbye!\n";
-            exit(0);
+
         } else {
             clearScreen();
             return;
