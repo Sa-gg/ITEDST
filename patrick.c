@@ -99,18 +99,31 @@ int continueProgram() {
 }
 
 void enterNumber(int arr[]) {
-    printf("\nEnter a set of 10 values: ");
-    for (int i = 0; i < 10; i++) {
-        while (scanf("%d", &arr[i]) != 1) {
-            printf("\033[1;31mInvalid input. Please enter integers separated by spaces\033[0m");
-            printf("\nEnter a set of 10 values: ");
-            while (getchar() != '\n');
-            i = -1;
+    while (true) {
+        printf("\nEnter a set of 10 values: ");
+        if (checkInput(arr)) {
             break;
         }
+        printf("\033[1;31mInvalid input. Please enter exactly 10 integers separated by spaces\033[0m\n");
     }
-    while (getchar() != '\n');
+    printf("\n");
 }
+
+int checkInput(int arr[]) {
+    int ch;
+    for (int i = 0; i < 10; i++) {
+        if (scanf("%d", &arr[i]) != 1) {
+            while (getchar() != '\n'); 
+            return false;
+        }
+    }
+    if ((ch = getchar()) != '\n' && ch != EOF) {
+        while (getchar() != '\n'); 
+        return false;
+    }
+    return true;
+}
+
 
 void bubbleSort(int arr[]) {
     bool isSorted = false;
