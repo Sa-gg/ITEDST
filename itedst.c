@@ -1,64 +1,85 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
-void enterNumber(int arr[]);
-void bubbleSort(int arr[]);
-void largestElement(int arr[]);
-void primeNumber(int arr[]);
-
-int main() {
-    int choice;
-    char continueProgram = 'Y';
-    int arr[10];
-    do {
-        printf("\n\nData Structures and Algorithms\n       Final Project");
-        printf("\n\n         Main Menu");
-        printf("\n----------------------------------");
-        printf("\n[1] Bubble Sort\n[2] Largest Element in the Array\n[3] Prime Number Identifier\n[4] Exit\n\n");
+int main() {    
+    int menuChoice, arr[10];
+    while(true) {
+        printf("\n\nData Structures and Algorithms\n       Final Project \n\n         Main Menu\n----------------------------------\n[1] Bubble Sort\n[2] Largest Element in the Array\n[3] Prime Number Identifier\n[4] Exit\n\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
-        (choice >= 1 && choice <= 3) && printf("\n\nData Structures and Algorithms\n       Final Project");
-        switch (choice) {
+        if (scanf("%d", &menuChoice) != 1) {
+            printf("\033[1;31mInvalid input. Please enter a valid number.\033[0m\n");
+            while (getchar() != '\n'); 
+            continue;
+        }
+        switch (menuChoice) {
             case 1:
-                printf("\n\n        Bubble Sort");
-                printf("\n----------------------------------");
-                printf("\nThis mini program will sort a set of 10 numbers using the Bubble Sort algorithm.\n");
-                enterNumber(arr);
-                bubbleSort(arr);
+                while (true) {
+                    system("cls");
+                    printf("\nData Structures and Algorithms\n       Final Project \n\n        Bubble Sort\n----------------------------------\nThis mini program will sort a set of 10 numbers using the Bubble Sort algorithm.\n");
+                    enterNumber(arr);  bubbleSort(arr);
+                    if (continueProgram() == 1) { continue; } else { break;}
+                }
                 break;
             case 2:
-                printf("\n\n Largest Element in the Array");
-                printf("\n----------------------------------");
-                printf("\nThis mini program will find the largest element in a set of 10 numbers.\n");
-                enterNumber(arr);
-                largestElement(arr);
+            while (true) {
+                    system("cls");
+                    printf("\nData Structures and Algorithms\n       Final Project \n\n Largest Element in the Array\n----------------------------------\nThis mini program will find the largest element in a set of 10 numbers.\n");
+                    enterNumber(arr);  largestElement(arr);
+                    if (continueProgram() == 1) { continue; } else { break;}
+                }
                 break;
             case 3:
-                printf("\n\n   Prime Number Identifier");
-                printf("\n----------------------------------");
-                printf("\nThis mini program will find all prime numbers in a set of 10 numbers.\n");
-                enterNumber(arr);
-                primeNumber(arr);
+            while (true) {
+                    system("cls");
+                    printf("\nData Structures and Algorithms\n       Final Project \n\n   Prime Number Identifier\n----------------------------------\nThis mini program will find all prime numbers in a set of 10 numbers.\n");
+                    enterNumber(arr);  primeNumber(arr);
+                    if (continueProgram() == 1) { continue; } else { break;}
+                }
                 break;
             case 4:
-                printf("Exiting program. Goodbye!\n");
-                return 0;
+                exitProgram();
+                break; 
             default:
-                printf("Invalid choice. Please try again.\n");
-                continue;
-        }          
+                printf("\033[1;31mInvalid input. Please enter a valid number.\033[0m\n");
+                break;
+        }   
+    } 
+}
 
-        do {
-            printf("\nDo you want to perform another operation? (Y/N): ");
-            if (scanf(" %c", &continueProgram) != 1 || getchar() != '\n') {
-                while (getchar() != '\n'); 
-                printf("Invalid input. Please enter 'Y' or 'N'.\n");
-            }
-        } while (strchr("yYnN", continueProgram) == NULL);
+void exitProgram() {
+    char continueChoice;
+    do {
+        printf("\nAre you sure you want to EXIT [Y/N]: ");
+        scanf(" %c", &continueChoice);
+        while (getchar() != '\n'); 
+        if (strchr("yYnN", continueChoice) == NULL) {
+            printf("\033[1;31mInvalid input. Please enter 'Y' or 'N'.\033[0m\n");
+        } else if (continueChoice == 'Y' || continueChoice == 'y') {
+            exit(0); 
+        } else {
+            system("cls");
+            return; 
+        }
+    } while (1);
+}
 
-    } while (continueProgram == 'y' || continueProgram == 'Y');
-   
+int continueProgram() {
+    char continueChoice;
+    do {
+        printf("\nDo you want to continue [Y/N]: ");
+        scanf(" %c", &continueChoice);
+        while (getchar() != '\n'); 
+        if (strchr("yYnN", continueChoice) == NULL) {
+            printf("\033[1;31mInvalid input. Please enter 'Y' or 'N'.\033[0m\n");
+        } else if (continueChoice == 'Y' || continueChoice == 'y') {
+            system("cls");
+            return 1; 
+        } else {
+            system("cls");
+            return 2; 
+        }
+    } while (1);
 }
 
 void enterNumber(int arr[]) {
@@ -111,4 +132,7 @@ void primeNumber(int arr[]) {
     }
     printf("\n");
 }
+
+
+
 
